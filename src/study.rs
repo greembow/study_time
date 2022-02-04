@@ -2,7 +2,7 @@ use std::fs::{File, rename};
 use std::io::{BufReader, BufRead};
 use crate::utils;
 
-pub fn begin_study(app_list: &String, app_dir: &String) -> std::io::Result<()> {
+pub fn begin_study(app_list: &String, app_dir: &String) -> std::result::Result<(), Box<dyn std::error::Error>> {
     let file = File::open(app_list)?; // open the app list
     let reader = BufReader::new(file); // create the buffered reader
     for line in reader.lines() {
@@ -20,7 +20,7 @@ pub fn begin_study(app_list: &String, app_dir: &String) -> std::io::Result<()> {
     Ok(())
 }
 
-pub fn end_study(app_list: &String, app_dir: &String) -> std::io::Result<()> {
+pub fn end_study(app_list: &String, app_dir: &String) -> std::result::Result<(), Box<dyn std::error::Error>> {
     let file = File::open(app_list)?; // open the app list
     let reader = BufReader::new(file); // create the buffered reader
     for line in reader.lines() {
