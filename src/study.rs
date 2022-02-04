@@ -3,13 +3,11 @@ use std::io::{BufReader, BufRead};
 use crate::utils;
 
 pub fn begin_study(app_list: &String, app_dir: &String) -> std::io::Result<()> {
-    dbg!(app_list, app_dir);
     let file = File::open(app_list)?; // open the app list
     let reader = BufReader::new(file); // create the buffered reader
     for line in reader.lines() {
         // run the following for every line
         let line = line.expect("Couldn't read a line from the app list");
-        dbg!(&line);
         /*FIXME badly convert the result type to a String so we can use it
         This really needs to be fixed because right now if the program
         errors the user has no idea why as it just panics */  
