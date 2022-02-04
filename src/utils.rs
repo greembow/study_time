@@ -6,7 +6,7 @@ pub fn vprintln(input_text: String) {
 }
 
 pub fn expand_paths(input_path: String) -> String {
-    let expanded_path = shellexpand::tilde(&input_path).to_string();
+    let expanded_path: String = input_path.replace('~', &std::env::var("HOME").unwrap());
     // use shellexpand to allow the usage of ~ in paths
     return expanded_path;
 }
